@@ -1,0 +1,9 @@
+- name: "Installing Software"
+  yum: pkg={{ item }} state=installed
+  with_items:
+  - vim
+  - nmap
+  - git
+  - libselinux-python
+- name: "Copy files"
+  copy: src=/home/mku/readme dest=/home/mku/readme owner=root group=root mode-0644
