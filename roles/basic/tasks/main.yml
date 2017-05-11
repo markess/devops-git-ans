@@ -5,5 +5,8 @@
   - nmap
   - git
   - libselinux-python
+- name: "Copy ntp config"
+  copy: src=/home/mku/ansible/ntp.conf dest=/etc/ntp.conf owner=root group=root mode-0644
+
 - name: "Copy files"
   copy: src=/home/mku/readme dest=/home/mku/readme owner=root group=root mode-0644
