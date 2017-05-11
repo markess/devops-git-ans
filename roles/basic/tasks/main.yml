@@ -10,3 +10,7 @@
 
 - name: "Copy files"
   copy: src=/home/mku/readme dest=/home/mku/readme owner=root group=root mode-0644
+
+- name: "Start NTPD"
+  shell: systemctl start ntpd
+
