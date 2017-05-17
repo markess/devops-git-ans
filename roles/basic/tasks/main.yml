@@ -11,6 +11,10 @@
 - name: "Copy files"
   copy: src=/home/mku/readme dest=/home/mku/readme owner=root group=root mode-0644
 
+- name: "Copy file time zone"
+  copy: src=/usr/share/zoneinfo/Europe/Kiev dest=/etc/localtime owner=root group=root mode-0644
+
 - name: "Start NTPD"
-  shell: systemctl start ntpd
+  shell: systemctl restart ntpd
+  shell: chkconfig --level 345 ntpd on
 
