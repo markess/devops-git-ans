@@ -1,0 +1,7 @@
+- name: enable-proxy-config
+  shell: cat proxy.conf
+  notify:
+  - restart-apache
+
+- name: restart-httpd
+  service: name=httpd state=restarted

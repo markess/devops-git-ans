@@ -2,3 +2,7 @@
 - hosts: all
   roles:
   - basic
+
+- hosts: centos2-dev
+  roles:
+  - dev

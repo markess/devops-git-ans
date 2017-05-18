@@ -1,0 +1,12 @@
+- name: "test dev server manmagement"
+  yum: name={{ item }}
+  with_items:
+  - httpd
+
+#- name: "enable proxy modeule"
+#  apache2_module: name=proxy_http
+
+- name: "add config"
+  template: src=../files/proxy.conf dest=/etc/httpd/conf-available mode=0644
+  notify:
+  - enable-proxy-config
