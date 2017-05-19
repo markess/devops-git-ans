@@ -1,11 +1,13 @@
 ---
-- hosts: mkcentos-gt 
+- hosts:  
+  - mkcentos-gt
+  - centos2-dev 
   roles:
   - basic
 
-- hosts: centos2-dev
-  roles:
-  - dev
+#- hosts: centos2-dev
+#  roles:
+#  - dev
 
 - hosts: mkubuntu
   roles:

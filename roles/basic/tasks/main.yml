@@ -6,6 +6,7 @@
   - git
   - libselinux-python
   - vsftpd
+  - ftp
 
 - name: "copy cfg and restart FTPd"
   copy: src=../files/vsftpd.conf dest=/etc/vsftpd/vsftpd.conf owner=root group=root mode-0644
@@ -21,4 +22,7 @@
 - name: "Copy file time zone and restart ntpd"
   copy: src=/usr/share/zoneinfo/Europe/Kiev dest=/etc/localtime owner=root group=root mode-0644
   notify:
-  - restart-ntpd  
+  - restart-ntpd 
+
+- name: "adding IP to /etc/hosts" 
+  lineinfile: name=/etc/hosts line="172.16.10.95 mkubuntu"
