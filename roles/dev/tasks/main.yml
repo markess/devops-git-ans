@@ -2,6 +2,12 @@
   yum: name={{ item }}
   with_items:
   - httpd
+  - vsftpd
+
+- name: "copy cfg and restart FTPd"
+  copy: src=../files/vsftpd.conf dest=/etc/vsftpd/vsftpd.conf owner=root group=root mode-0644
+  notify:
+  - restart-vsftpd
 
 #- name: "enable proxy modeule"
 #  apache2_module: name=proxy_http
