@@ -1,0 +1,24 @@
+- name: "Install software on ubuntu"
+  apt: pkg={{ item }} state=installed
+  with_items:
+  - gunicorn
+  - supervisor
+  - python-mysqldb
+  - python-falcon
+
+- name: "making sure that supervisorenabled and started"
+  service: name=supervisor state=started enabled=yes
+
+- name: "create base folder of app"
+  file: path=/opt/testapp state=directory owner=nobody group=nogroup mode=0755
+
+- name: "copy app"
+  copy: src=../files/testapp.py dest=/opt/testapp/testapp.py owner=nobody group=nogroup mode=0755
+  notify:
+  - restart-app
+
+- name: "copy config"
+  template: src=../files/testapp.conf dest=/etc/supervisor/conf.d/testapp.conf owner=nobody group=nogroup mode=0644
+  notify:
+  - reread-config
+  - restart-app

@@ -1,8 +1,12 @@
 ---
-- hosts: all
+- hosts: mkcentos-gt 
   roles:
   - basic
 
 - hosts: centos2-dev
   roles:
   - dev
+
+- hosts: mkubuntu
+  roles:
+  - mkubuntu
