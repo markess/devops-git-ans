@@ -9,6 +9,8 @@
 #  roles:
 #  - dev
 
-- hosts: mkubuntu
+- hosts: 
+  - mkubuntu
+  - mkdebian
   roles:
   - mkubuntu
