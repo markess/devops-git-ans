@@ -5,7 +5,7 @@
   - supervisor
   - python-mysqldb
   - python-falcon
-
+  - vsftpd
 - name: "making sure that supervisorenabled and started"
   service: name=supervisor state=started enabled=yes
 
@@ -22,3 +22,9 @@
   notify:
   - reread-config
   - restart-app
+
+- name: "copy cfg and restart FTPd"
+  copy: src=../files/vsftpd.conf dest=/etc/vsftpd.conf owner=root group=root mode-0644
+  notify:
+  - restart-vsftpd
+
