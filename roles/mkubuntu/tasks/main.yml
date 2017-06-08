@@ -6,6 +6,7 @@
   - python-mysqldb
   - python-falcon
   - vsftpd
+  - tree
 - name: "making sure that supervisorenabled and started"
   service: name=supervisor state=started enabled=yes
 
